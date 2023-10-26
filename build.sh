@@ -56,17 +56,6 @@ function logo {
     printf "\e[0m\n"
 }
 
-function license {
-    printf "\e[1;34m"
-    cat LICENSE
-    printf "\e[0m\n"
-
-    if ! confirm_flipped "Continue?"; then
-        warning "Exiting..."
-        exit 1
-    fi
-}
-
 
 function clear_screen {
     printf "\033c"
@@ -296,9 +285,6 @@ clear_screen
 intro
 verify_docker_installed
 verify_docker_running
-
-clear_screen
-license
 
 # FOUNDRY DOWNLOAD
 clear_screen
