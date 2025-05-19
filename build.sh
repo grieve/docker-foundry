@@ -128,7 +128,7 @@ function get_foundry_zip_url {
     printf "\t1. Go to https://foundryvtt.com/ and sign in.\n"
     printf "\t2. Click your account name in the top right.\n"
     printf "\t3. Click 'Purchased Licenses'.\n"
-    printf "\t4. Select Operating System: Linux/NodeJS.\n"
+    printf "\t4. Select Operating System: Node.js.\n"
     printf "\t5. Click 'Timed URL'.\n"
     printf "\n"
 
@@ -156,7 +156,7 @@ function get_image_tags {
 function write_dockerfile {
     # Write the dockerfile to disk
     cat > Dockerfile << EOF
-FROM node:18-alpine
+FROM node:24-alpine
 
 RUN deluser node && \
     mkdir /opt/foundryvtt && \
@@ -175,7 +175,7 @@ USER foundry
 
 EXPOSE 30000
 
-ENTRYPOINT ["node", "resources/app/main.js", "--dataPath=/mnt/data", "--port=30000"]
+ENTRYPOINT ["node", "main.js", "--dataPath=/mnt/data", "--port=30000"]
 EOF
 }
 
